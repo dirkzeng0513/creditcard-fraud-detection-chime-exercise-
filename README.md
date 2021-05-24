@@ -1,4 +1,4 @@
-## Chime Take Home Colding Challenge Questions
+## Chime Take Home Coding Challenge Questions
 
 ## Table Of Contents
 
