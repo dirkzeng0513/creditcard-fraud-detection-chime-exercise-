@@ -34,15 +34,31 @@ select * from cte_calendar_daily_summary
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 with cte_first_cash_deposit as (
-select id,
+select user_id,
+       id,
        timestamp,
        amount,
-       row_number () over (partition by id order by timestamp asc) as rnk_ord
+       row_number () over (partition by user_id order by timestamp asc) as rnk_ord
   from funding_transactions
   where funding_type = 'cash_deposit'
 )
 
-select * from cte_first_cash_deposit where rnk_ord = 1
+cte_all_user_id_table as (
+select distinct dr.user_id,
+       -- Retain id, timestamp, and amount fields from cash table, so that those fields will be null for user_id without cash deposit history
+       cash.id,
+       cash.timestamp,
+       cash.amount
+
+  from funding_transactions dr
+  left join cte_first_cash_deposit cash
+  on dr.user_id = cash.user_id
+  and dr.id = cash.id
+  and dr.timestamp = cash.timestamp
+  where cash.rnk_ord = 1
+)
+
+select * from cte_all_user_id_table
 
 
 
