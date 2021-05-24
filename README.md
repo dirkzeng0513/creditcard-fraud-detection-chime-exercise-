@@ -1,5 +1,5 @@
 ## Chime Take Home Colding Challenge Questions
 
-Code and associated files 
+## Table Of Contents
 
-This repository contains the takehome write-up and associated code for 1) SQL challenge 2) A credit card fraud detection data exercise using decision tree models
+### Take home answer/analytics write-up(https://github.com/dirkzeng0513/creditcard-fraud-detection-chime-exercise-/blob/master/Chime_Take_Home%20(Yan%20Zeng).pdf)
