@@ -13,7 +13,7 @@
 
 -- create a global reference table to easily adjust the tracking window
 with global_time_reference as (
-select dateadd(day, -30, getdate())::date as starting_date,
+select dateadd(day, -30, getdate())::date as starting_date
 ),
 
 -- join the calendar table to create a per calendar day view
